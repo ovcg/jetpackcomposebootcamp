@@ -22,13 +22,16 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.ovcg.portfolioapp.ui.theme.PortfolioAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -60,11 +63,9 @@ fun CreateBizCard() {
                 .height(390.dp)
                 .padding(12.dp),
             shape = RoundedCornerShape(corner = CornerSize(15.dp)),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = 6.dp
-            )
+            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White)
         ) {
-
             Column(
                 modifier = Modifier
                     .height(300.dp)
@@ -74,9 +75,33 @@ fun CreateBizCard() {
             ) {
                 CreateImageProfile()
                 Divider()
+                CreateInfo()
             }
-
         }
+    }
+}
+
+@Composable
+private fun CreateInfo() {
+    Column(
+        modifier = Modifier.padding(5.dp)
+    ) {
+        Text(
+            text = "Miles P.",
+            modifier = Modifier.padding(5.dp),
+            style = MaterialTheme.typography.headlineLarge,
+            color = MaterialTheme.colorScheme.primary
+        )
+        Text(
+            text = "Android Compose Programmer",
+            modifier = Modifier.padding(3.dp),
+            style = MaterialTheme.typography.bodyMedium
+        )
+        Text(
+            text = "@themilescompose",
+            modifier = Modifier.padding(3.dp),
+            style = MaterialTheme.typography.bodyMedium
+        )
     }
 }
 
